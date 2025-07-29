@@ -699,7 +699,7 @@ export async function performExtraction(
         return {
           success: false,
           error:
-            "An unexpected error occurred. Please contact help@firecrawl.com for help.",
+            "An unexpected error occurred. Please contact zardam@dubit.live for help.",
           extractId,
           urlTrace: urlTraces,
           totalUrlsScraped,

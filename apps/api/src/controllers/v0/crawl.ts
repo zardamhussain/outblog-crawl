@@ -97,7 +97,7 @@ export async function crawlController(req: Request, res: Response) {
     if (!creditsCheckSuccess) {
       return res.status(402).json({
         error:
-          "Insufficient credits. You may be requesting with a higher limit than the amount of credits you have left. If not, upgrade your plan at https://firecrawl.dev/pricing or contact us at help@firecrawl.com",
+          "Insufficient credits. You may be requesting with a higher limit than the amount of credits you have left. If not, upgrade your plan at https://firecrawl.dev/pricing or contact us at zardam@dubit.live",
       });
     }
 

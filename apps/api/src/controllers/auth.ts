@@ -405,6 +405,34 @@ export async function supaAuthenticateUser(
     };
   }
 
+  // BEGIN: Allowlist-based authentication using env var ALLOWED_KEYS (comma-separated)
+  const allowedKeysEnv = process.env.ALLOWED_KEYS ?? "";
+  const allowedKeys = allowedKeysEnv.split(",").map((k) => k.trim()).filter(Boolean);
+  if (allowedKeys.length > 0 && allowedKeys.includes(token)) {
+    // Treat env-allowed keys similar to preview tokens but tied to token value
+    const tmpMode = mode ?? RateLimiterMode.Crawl;
+    const rateLimiter = getRateLimiter(tmpMode, null);
+    const teamId = `env_${token}`;
+    try {
+      await rateLimiter.consume(teamId);
+    } catch (rateLimiterRes) {
+      const secs = Math.round(rateLimiterRes.msBeforeNext / 1000) || 1;
+      const retryDate = new Date(Date.now() + rateLimiterRes.msBeforeNext);
+      return {
+        success: false,
+        error: `Rate limit exceeded. Upgrade your plan or please retry after ${secs}s, resets at ${retryDate}`,
+        status: 429,
+      };
+    }
+
+    return {
+      success: true,
+      team_id: teamId,
+      chunk: null,
+    };
+  }
+  // END: Allowlist-based authentication
+
   const incomingIP = (req.headers["x-preview-ip"] || req.headers["x-forwarded-for"] ||
     req.socket.remoteAddress) as string;
   const iptoken = incomingIP + token;

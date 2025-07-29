@@ -63,7 +63,7 @@ export async function extractController(
   req.body = extractRequestSchema.parse(req.body);
 
   if (req.acuc?.flags?.forceZDR) {
-    return res.status(400).json({ success: false, error: "Your team has zero data retention enabled. This is not supported on extract. Please contact support@firecrawl.com to unblock this feature." });
+    return res.status(400).json({ success: false, error: "Your team has zero data retention enabled. This is not supported on extract. Please contact zardam@dubit.live to unblock this feature." });
   }
 
   const invalidURLs: string[] = req.body.urls?.filter((url: string) => isUrlBlocked(url, req.acuc?.flags ?? null)) ?? [];

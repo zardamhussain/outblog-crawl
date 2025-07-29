@@ -12,7 +12,8 @@ export function withAuth<T, U extends any[]>(
 ) {
   return async function (...args: U): Promise<T> {
     const useDbAuthentication = process.env.USE_DB_AUTHENTICATION === "true";
-    if (!useDbAuthentication) {
+    const hasAllowedKeys = (process.env.ALLOWED_KEYS ?? "").trim().length > 0;
+    if (!useDbAuthentication && !hasAllowedKeys) {
       if (warningCount < 5) {
         logger.warn("You're bypassing authentication");
         warningCount++;

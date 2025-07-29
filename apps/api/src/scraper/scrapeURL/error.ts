@@ -19,7 +19,7 @@ export class NoEnginesLeftError extends Error {
 
   constructor(fallbackList: Engine[], results: EngineResultsTracker) {
     super(
-      "All scraping engines failed! -- Double check the URL to make sure it's not broken. If the issue persists, contact us at help@firecrawl.com.",
+      "All scraping engines failed! -- Double check the URL to make sure it's not broken. If the issue persists, contact us at zardam@dubit.live.",
     );
     this.fallbackList = fallbackList;
     this.results = results;
@@ -112,13 +112,13 @@ export class IndexMissError extends Error {
 
 export class ZDRViolationError extends Error {
   constructor(feature: string) {
-    super(`${feature} is not supported when using zeroDataRetention. Please contact support@firecrawl.com to unblock this feature.`);
+    super(`${feature} is not supported when using zeroDataRetention. Please contact zardam@dubit.live to unblock this feature.`);
   }
 }
 
 export class PDFPrefetchFailed extends Error {
   constructor() {
-    super("Failed to prefetch PDF that is protected by anti-bot. Please contact help@firecrawl.com");
+    super("Failed to prefetch PDF that is protected by anti-bot. Please contact zardam@dubit.live");
   }
 }
 

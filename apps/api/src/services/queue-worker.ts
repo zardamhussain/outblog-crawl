@@ -507,7 +507,7 @@ const processExtractJobInternal = async (
         status: "failed",
         error:
           result?.error ??
-          "Unknown error, please contact help@firecrawl.com. Extract id: " +
+          "Unknown error, please contact zardam@dubit.live. Extract id: " +
             job.data.extractId,
       });
 
@@ -534,7 +534,7 @@ const processExtractJobInternal = async (
       error:
         error.error ??
         error ??
-        "Unknown error, please contact help@firecrawl.com. Extract id: " +
+        "Unknown error, please contact zardam@dubit.live. Extract id: " +
           job.data.extractId,
     });
     return {
@@ -542,7 +542,7 @@ const processExtractJobInternal = async (
       error:
         error.error ??
         error ??
-        "Unknown error, please contact help@firecrawl.com. Extract id: " +
+        "Unknown error, please contact zardam@dubit.live. Extract id: " +
           job.data.extractId,
     };
     // throw error;

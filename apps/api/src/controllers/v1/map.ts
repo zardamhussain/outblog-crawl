@@ -322,7 +322,7 @@ export async function mapController(
   req.body = mapRequestSchema.parse(req.body);
   
   if (req.acuc?.flags?.forceZDR) {
-    return res.status(400).json({ success: false, error: "Your team has zero data retention enabled. This is not supported on map. Please contact support@firecrawl.com to unblock this feature." });
+    return res.status(400).json({ success: false, error: "Your team has zero data retention enabled. This is not supported on map. Please contact zardam@dubit.live to unblock this feature." });
   }
 
   logger.info("Map request", {

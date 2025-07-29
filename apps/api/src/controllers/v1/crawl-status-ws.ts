@@ -233,7 +233,7 @@ export async function crawlStatusWSController(
     return close(ws, 1011, {
       type: "error",
       error:
-        "An unexpected error occurred. Please contact help@firecrawl.com for help. Your exception ID is " +
+        "An unexpected error occurred. Please contact zardam@dubit.live for help. Your exception ID is " +
         id,
     });
   }

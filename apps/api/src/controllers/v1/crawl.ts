@@ -22,7 +22,7 @@ export async function crawlController(
   if (req.body.zeroDataRetention && !req.acuc?.flags?.allowZDR) {
     return res.status(400).json({
       success: false,
-      error: "Zero data retention is enabled for this team. If you're interested in ZDR, please contact support@firecrawl.com",
+      error: "Zero data retention is enabled for this team. If you're interested in ZDR, please contact zardam@dubit.live",
     });
   }
 
