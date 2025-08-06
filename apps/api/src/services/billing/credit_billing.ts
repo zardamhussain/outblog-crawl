@@ -87,14 +87,21 @@ export async function supaCheckTeamCredits(
   team_id: string,
   credits: number,
 ): Promise<CheckTeamCreditsResponse> {
-  // WARNING: chunk will be null if team_id is preview -- do not perform operations on it under ANY circumstances - mogery
-  if (team_id === "preview" || team_id.startsWith("preview_")) {
+  // Preview users (playground) and allow-listed keys (env_ prefix) have unlimited credits
+  if (
+    team_id === "preview" ||
+    team_id.startsWith("preview_") ||
+    team_id.startsWith("env_")
+  ) {
     return {
       success: true,
       message: "Preview team, no credits used",
       remainingCredits: Infinity,
     };
-  } else if (chunk === null) {
+  }
+
+  // If we reach here and chunk is null, that's an unexpected state – bail out.
+  if (chunk === null) {
     throw new Error("NULL ACUC passed to supaCheckTeamCredits");
   }
 

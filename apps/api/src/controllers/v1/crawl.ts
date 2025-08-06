@@ -45,11 +45,13 @@ export async function crawlController(
 
   await logCrawl(id, req.auth.team_id);
 
-  let { remainingCredits } = req.account!;
   const useDbAuthentication = process.env.USE_DB_AUTHENTICATION === "true";
-  if (!useDbAuthentication) {
-    remainingCredits = Infinity;
-  }
+  // Safely derive remaining credits. In DB-auth mode we respect the account value when present,
+  // otherwise we default to Infinity to avoid runtime crashes when `req.account` is undefined
+  // (e.g. when using allow-listed keys or preview tokens).
+  const remainingCredits = useDbAuthentication
+    ? req.account?.remainingCredits ?? Infinity
+    : Infinity;
 
   const crawlerOptions = {
     ...req.body,

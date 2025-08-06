@@ -67,7 +67,7 @@ services:
       HOST: "0.0.0.0"
       PORT: ${INTERNAL_PORT:-3002}
       FLY_PROCESS_GROUP: app
-      ENV: local
+      ENV: ${ENV}
     depends_on:
       - redis
       - playwright-service
@@ -80,7 +80,7 @@ services:
     environment:
       <<: *common-env
       FLY_PROCESS_GROUP: worker
-      ENV: local
+      ENV: ${ENV}
     depends_on:
       - redis
       - playwright-service
@@ -97,6 +97,13 @@ services:
     networks:
       - backend
     command: redis-server --bind 0.0.0.0
+
+  dozzle:
+    image: amir20/dozzle:latest
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+    - 6868:8080
 
 networks:
   backend:
