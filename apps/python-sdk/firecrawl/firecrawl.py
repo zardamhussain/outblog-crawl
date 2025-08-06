@@ -450,10 +450,10 @@ class FirecrawlApp:
             api_url (Optional[str]): Base URL for the Firecrawl API.
         """
         self.api_key = api_key or os.getenv('FIRECRAWL_API_KEY')
-        self.api_url = api_url or os.getenv('FIRECRAWL_API_URL', 'https://api.firecrawl.dev')
+        self.api_url = api_url or os.getenv('FIRECRAWL_API_URL', 'https://crawl.outblogai.com')
         
         # Only require API key when using cloud service
-        if 'api.firecrawl.dev' in self.api_url and self.api_key is None:
+        if 'crawl.outblogai.com' in self.api_url and self.api_key is None:
             logger.warning("No API key provided for cloud service")
             raise ValueError('No API key provided')
             

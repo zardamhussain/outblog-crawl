@@ -17,12 +17,12 @@ def get_version():
 
 
 setup(
-    name="firecrawl-py",
+    name="outblog-crawl-py",
     version=get_version(),
-    url="https://github.com/mendableai/firecrawl",
-    author="Mendable.ai",
-    author_email="nick@mendable.ai",
-    description="Python SDK for Firecrawl API",
+    url="https://github.com/zardamhussain/outblog-crawl",
+    author="Zardam Hussain",
+    author_email="zardamhussain@gmail.com",
+    description="Python SDK for Outblog Crawl API",
     long_description=long_description_content,
     long_description_content_type="text/markdown",
     packages=find_packages(),
@@ -58,11 +58,11 @@ setup(
         "Topic :: Text Processing",
         "Topic :: Text Processing :: Indexing",
     ],
-    keywords="SDK API firecrawl",
+    keywords="SDK API outblog-crawl",
     project_urls={
-        "Documentation": "https://docs.firecrawl.dev",
-        "Source": "https://github.com/mendableai/firecrawl",
-        "Tracker": "https://github.com/mendableai/firecrawl/issues",
+        "Documentation": "https://docs.outblogai.com",
+        "Source": "https://github.com/zardamhussain/outblog-crawl",
+        "Tracker": "https://github.com/zardamhussain/outblog-crawl/issues",
     },
     license="GNU General Public License v3 (GPLv3)",
 )
